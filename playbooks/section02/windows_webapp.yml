@@ -69,6 +69,12 @@
        remote_src: true
       notify: restart_iis
 
+    - name: Tag the page
+      ansible.builtin.lineinfile:
+        path: C:\inetpub\wwwroot\index.html
+        line: "This is running on the Windows Host"
+        insertafter: "<p>&copy; 2024 TMM - Where comedy lives. All rights reserved.</p>"
+
   handlers:
     - name: restart_iis
       ansible.windows.win_service:
